@@ -7,7 +7,7 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/avatar"
-        android:label="fu tri"
+        android:label="mobile news"
         android:roundIcon="@drawable/avatar"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
