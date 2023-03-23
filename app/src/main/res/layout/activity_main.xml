@@ -74,6 +74,7 @@
         android:background="@color/teal_200"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu" />
+        app:menu="@menu/menu"
+        app:itemTextColor="@color/black"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
