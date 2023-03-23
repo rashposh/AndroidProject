@@ -34,8 +34,9 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="408dp"
-        android:layout_height="611dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         tools:layout_editor_absoluteX="2dp">
 
@@ -57,55 +58,6 @@
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="68dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:gravity="center"
-        android:background="#5ae8e6"
-
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Button
-            android:id="@+id/bao1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#ffffff"
-            android:text="báo mới"
-            android:textColor="@color/black" />
-
-        <Button
-            android:id="@+id/video"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:backgroundTint="#ffffff"
-            android:text="video"
-            android:textColor="@color/black" />
-
-        <Button
-            android:id="@+id/trend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:backgroundTint="#ffffff"
-            android:text="trend"
-            android:textColor="@color/black" />
-
-        <Button
-            android:id="@+id/like"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:backgroundTint="#ffffff"
-            android:text="yêu thích"
-            android:textColor="@color/black" />
-    </LinearLayout>
 
     <TextView
         android:id="@+id/textView5"
@@ -115,5 +67,13 @@
         app:layout_constraintStart_toEndOf="@+id/more"
         tools:layout_editor_absoluteY="4dp" />
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="tin tức" android:id="@+id/self" android:icon="@drawable/baseline_newspaper_24"/>
+    <item android:title="video" android:id="@+id/adventure" android:icon="@drawable/baseline_smart_display_24"/>
+    <item android:title="liên hệ" android:id="@+id/cc" android:icon="@drawable/baseline_local_phone_24"/>
+</menu>
