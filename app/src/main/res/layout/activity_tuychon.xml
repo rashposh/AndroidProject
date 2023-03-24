@@ -7,7 +7,7 @@
     tools:context=".tuychon">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/purple_700"
         android:gravity="center_horizontal"
@@ -20,7 +20,6 @@
             android:text="Tùy chọn"
             android:textColor="@color/white"
             android:paddingLeft="155dp"
-
             android:textSize="25sp"
             android:textStyle="bold"
             />
@@ -55,8 +54,8 @@
                 />
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:backgroundTint="@color/white"
+                android:layout_height="50dp"
+                android:backgroundTint="#56EAE3E3"
                 android:paddingRight="220dp"
                 android:text="Hot"
                 android:textColor="@color/black"
@@ -65,8 +64,8 @@
                 />
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="@color/white"
+                android:layout_height="50dp"
+                android:backgroundTint="#56EAE3E3"
                 android:paddingRight="220dp"
                 android:text="Mới nhất"
                 android:textColor="@color/black"
@@ -75,8 +74,8 @@
                 />
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="@color/white"
+                android:layout_height="50dp"
+                android:backgroundTint="#56EAE3E3"
                 android:paddingRight="220dp"
                 android:text="Video"
                 android:textColor="@color/black"
@@ -85,8 +84,8 @@
                 />
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="@color/white"
+                android:layout_height="50dp"
+                android:backgroundTint="#56EAE3E3"
                 android:paddingRight="220dp"
                 android:text="Thế giới"
                 android:textColor="@color/black"
@@ -95,8 +94,8 @@
                 />
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="@color/white"
+                android:layout_height="50dp"
+                android:backgroundTint="#56EAE3E3"
                 android:paddingRight="220dp"
                 android:text="Thời sự"
                 android:textColor="@color/black"
@@ -105,8 +104,8 @@
                 />
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="@color/white"
+                android:layout_height="50dp"
+                android:backgroundTint="#56EAE3E3"
                 android:paddingRight="220dp"
                 android:text="Thể thao"
                 android:textColor="@color/black"
@@ -115,8 +114,8 @@
                 />
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="@color/white"
+                android:layout_height="50dp"
+                android:backgroundTint="#56EAE3E3"
                 android:paddingRight="220dp"
                 android:text="Thể thao"
                 android:textColor="@color/black"
@@ -125,8 +124,8 @@
                 />
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="@color/white"
+                android:layout_height="50dp"
+                android:backgroundTint="#56EAE3E3"
                 android:paddingRight="220dp"
                 android:text="Thể thao"
                 android:textColor="@color/black"
@@ -135,8 +134,8 @@
                 />
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="@color/white"
+                android:layout_height="50dp"
+                android:backgroundTint="#56EAE3E3"
                 android:paddingRight="220dp"
                 android:text="Thể thao"
                 android:textColor="@color/black"
@@ -145,8 +144,8 @@
                 />
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="@color/white"
+                android:layout_height="50dp"
+                android:backgroundTint="#56EAE3E3"
                 android:paddingRight="220dp"
                 android:text=""
                 android:textColor="@color/black"
