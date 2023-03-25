@@ -7,13 +7,16 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/cho_an"
-        android:label="thg quan an"
+        android:label="Mobile News"
         android:roundIcon="@drawable/avatar"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".canhan"
+            android:name=".chinhsualichsu"
+            android:exported="false" />
+        <activity
+            android:name=".lichsu"
             android:exported="false" />
         <activity
             android:name=".tuychon"

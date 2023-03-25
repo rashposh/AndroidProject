@@ -32,13 +32,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         );
-        video.setOnClickListener(new View.OnClickListener() {
+        /**video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, VideoActivity.class));
             }
         }
-        );
+        )*/
         trend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {setContentView(R.layout.baomoi);}
