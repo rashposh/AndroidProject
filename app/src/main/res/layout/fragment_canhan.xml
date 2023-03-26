@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".canhan">
 
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="730dp"
         tools:context=".canhan"
@@ -41,13 +40,28 @@
             android:id="@+id/btthongbao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:backgroundTint="@color/white"
             android:textSize="35sp"
             android:hint="Thong Bao"
             android:textStyle="bold"
             android:drawableLeft="@drawable/baseline_notifications_24"
             />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:text="CÔNG TY TNHH CÔNG NGHỆ MẠNG THÔNG TIN VIỆT NAM"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:padding="20dp"
+            android:text="CÔNG TY TNHH CÔNG NGHỆ MẠNG THÔNG TIN VIỆT NAM"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
     </LinearLayout>
 
 </FrameLayout>

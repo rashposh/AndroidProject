@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".lichsu">
+    tools:context=".mucyeuthich">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,35 +14,43 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:orientation="horizontal"
-            >
-
+            android:orientation="horizontal">
             <Button
-                android:id="@+id/backlichsu"
+                android:id="@+id/backYeuthich"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/white"
+                android:text="yo"
                 android:drawableEnd="@drawable/baseline_keyboard_backspace_24"
                 />
             <TextView
                 android:layout_width="190dp"
                 android:layout_height="match_parent"
-                android:text="Lịch sử"
+                android:text="Mục yêu thích"
                 android:textStyle="normal"
                 android:textSize="30sp"
                 android:gravity="center"
+                />
+            <Button
+                android:id="@+id/chinhsuaYT"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:textSize="15sp"
+                android:text="Chỉnh sửa"
+                android:textStyle="bold"
+                android:textColor="@color/black"
                 />
 
         </LinearLayout>
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingTop="10dp">
-
+                android:orientation="vertical">
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -70,27 +78,6 @@
             </LinearLayout>
 
         </ScrollView>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="#5A2D2D"
-        android:orientation="horizontal">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:backgroundTint="#5A2D2D"
-            android:text="Xóa"
-            android:textSize="18sp"/>
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:backgroundTint="#5A2D2D"
-            android:layout_marginLeft="170dp"
-            android:text="Xóa nhanh"
-            android:textSize="18sp"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

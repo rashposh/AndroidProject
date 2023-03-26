@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".lichsu">
+    tools:context=".chinhsuayeuthich">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
             <TextView
                 android:layout_width="190dp"
                 android:layout_height="match_parent"
-                android:text="Lịch sử"
+                android:text="Mục yêu thích"
                 android:textStyle="normal"
                 android:textSize="30sp"
                 android:gravity="center"
@@ -76,20 +76,12 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="#5A2D2D"
-        android:orientation="horizontal">
+        android:background="#435AA8">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:backgroundTint="#5A2D2D"
+            android:backgroundTint="#435AA8"
             android:text="Xóa"
-            android:textSize="18sp"/>
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:backgroundTint="#5A2D2D"
-            android:layout_marginLeft="170dp"
-            android:text="Xóa nhanh"
             android:textSize="18sp"/>
     </LinearLayout>
 

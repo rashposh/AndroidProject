@@ -12,18 +12,15 @@
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical">
         <LinearLayout
-            android:id="@+id/headerlichsu"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/svcontent">
-
+            android:orientation="horizontal">
             <Button
-                android:id="@+id/backlichsu"
+                android:id="@+id/backLichsu"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/white"
+                android:text="ye"
                 android:drawableEnd="@drawable/baseline_keyboard_backspace_24"
                 />
             <TextView
@@ -47,12 +44,9 @@
 
         </LinearLayout>
         <ScrollView
-            android:id="@+id/svcontent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:paddingTop="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/headerlichsu">
+            android:paddingTop="10dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
