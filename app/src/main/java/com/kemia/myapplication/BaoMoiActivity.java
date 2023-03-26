@@ -14,6 +14,7 @@ public class BaoMoiActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.baomoi);
+        System.out.println("a");
 //        bmTextView = findViewById(R.id.bmTextView);
 //        bmButton = findViewById(R.id.bmButton);
 //        bmButton.setOnClickListener(view -> bmTextView.setText("asc"));
