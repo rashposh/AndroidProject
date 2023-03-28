@@ -60,15 +60,19 @@ package com.kemia.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Window;
 
+import com.google.android.material.navigation.NavigationView;
 import com.kemia.myapplication.fragment.TinTucFragment;
 import com.kemia.myapplication.fragment.CaNhanFragment;
 
@@ -77,6 +81,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView mnBottom;
+    private DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -88,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         loadFragment(fmnew);
         mnBottom = findViewById(R.id.bottomNavigationView);
         //
-
+        drawerLayout= fmnew.getView().findViewById(R.id.drawer_layout);
         // Load lên Fragment
         mnBottom.setOnItemSelectedListener(getListener());
     }
@@ -129,6 +134,44 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         };
+    }
+    void initMenu()
+    {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("Menu Drawer");
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.nagivation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                Fragment fmNew;
+//                switch (item.getItemId())
+//                {
+//                    case R.id.nav_home:
+//                        fmNew = new HomeFragment();
+//                        loadFragment(fmNew);
+//                        return  true;
+//                    case R.id.nav_image:
+//                        fmNew = new ImageFragment();
+//                        loadFragment(fmNew);
+//                        return  true;
+//                    case R.id.nav_contact:
+//                        fmNew = new ContactFragment();
+//                        loadFragment(fmNew);
+//                        return  true;
+//                    case R.id.nav_favorite:
+//                        fmNew = new FavoriteFragment();
+//                        loadFragment(fmNew);
+//                        return  true;
+//                }
+//                return true;
+//            }
+//        });
+
     }
 
     // Hàm load fragment
