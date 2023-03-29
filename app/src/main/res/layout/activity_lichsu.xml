@@ -31,16 +31,7 @@
                 android:textSize="30sp"
                 android:gravity="center"
                 />
-            <Button
-                android:id="@+id/chinhsuaLS"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="@color/white"
-                android:textSize="15sp"
-                android:text="Chỉnh sửa"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                />
+
 
         </LinearLayout>
         <ScrollView

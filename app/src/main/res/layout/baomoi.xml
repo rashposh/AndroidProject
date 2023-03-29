@@ -11,18 +11,19 @@
         android:id="@+id/btback"
         android:layout_width="67dp"
         android:layout_height="60dp"
-        app:layout_constraintRight_toLeftOf="@+id/imageView6"
+        android:text="2"
+        app:layout_constraintRight_toLeftOf="@+id/logoheader"
         android:backgroundTint="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:drawableEnd="@drawable/baseline_keyboard_backspace_24"
         />
-    <ImageView
-        android:id="@+id/imageView6"
+    <ImageButton
+        android:id="@+id/logoheader"
         android:layout_width="285dp"
         android:layout_height="55dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/avatar"
+        android:background="@color/white"
+        android:src="@drawable/logoHeader"
         app:layout_constraintBottom_toBottomOf="@+id/btlike"
         app:layout_constraintEnd_toStartOf="@+id/btlike"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,6 +34,7 @@
         android:layout_height="55dp"
         android:layout_marginTop="4dp"
         android:backgroundTint="@color/white"
+        android:text="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:drawableEnd="@drawable/like"
@@ -44,7 +46,7 @@
         android:layout_height="0dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/logoheader"
         android:layout_margin="20dp"
         >
         <androidx.viewpager2.widget.ViewPager2

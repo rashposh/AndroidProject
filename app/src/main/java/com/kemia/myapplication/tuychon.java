@@ -1,8 +1,10 @@
 package com.kemia.myapplication;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Window;
 
 public class tuychon extends AppCompatActivity {
 

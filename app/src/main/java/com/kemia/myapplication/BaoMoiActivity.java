@@ -13,6 +13,7 @@ public class BaoMoiActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.baomoi);
         System.out.println("a");
 //        bmTextView = findViewById(R.id.bmTextView);
