@@ -23,7 +23,7 @@
         android:layout_width="285dp"
         android:layout_height="55dp"
         android:background="@color/white"
-        android:src="@drawable/logoHeader"
+        android:src="@drawable/logoheader"
         app:layout_constraintBottom_toBottomOf="@+id/btlike"
         app:layout_constraintEnd_toStartOf="@+id/btlike"
         app:layout_constraintTop_toTopOf="parent" />

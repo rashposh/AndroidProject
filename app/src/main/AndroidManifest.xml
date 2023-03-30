@@ -8,20 +8,16 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/cho_an"
         android:label="c"
-        android:roundIcon="@drawable/avatar"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
-        <meta-data
-            android:name="com.google.android.actions"
-            android:resource="@xml/tuychon" />
 
         <activity
             android:name=".mucyeuthich"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".lichsu"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -38,6 +34,8 @@
         <activity
             android:name=".BaoMoiActivity"
             android:exported="true" />
+
+
     </application>
 
 </manifest>

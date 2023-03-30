@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment_tuychon.moi">
+    tools:context=".fragment_tuychon.nong">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -11,7 +11,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="20dp"
         android:paddingLeft="18dp"
-        android:text="Mới nhất"
+        android:text="Nóng"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="20sp"

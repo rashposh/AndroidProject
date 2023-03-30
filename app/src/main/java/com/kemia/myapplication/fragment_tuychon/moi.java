@@ -1,4 +1,4 @@
-package com.kemia.myapplication;
+package com.kemia.myapplication.fragment_tuychon;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.kemia.myapplication.R;
 
 /**
  * A simple {@link Fragment} subclass.

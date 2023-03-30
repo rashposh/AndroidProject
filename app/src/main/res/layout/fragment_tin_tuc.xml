@@ -20,8 +20,8 @@
                 android:id="@+id/logoheader"
                 android:layout_width="267dp"
                 android:layout_height="75dp"
-                android:background="#F44336"
-                android:src="@drawable/logoHeader" />
+                android:background="#80B3DC"
+                android:src="@drawable/logoheader" />
             <!--        <SearchView-->
             <!--            android:id="@+id/search"-->
             <!--            android:layout_width="90dp"-->
@@ -51,7 +51,7 @@
                 <com.google.android.material.bottomnavigation.BottomNavigationView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#F44336"
+                    android:background="#80B3DC"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:menu="@menu/tuychon" />

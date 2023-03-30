@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:title="Nóng" android:id="@+id/nong" android:icon="@drawable/nong"  />
-    <item android:title="Moi nhat" android:id="@+id/moinhat" android:icon="@drawable/moinhat"/>
-    <item android:title="Trong nuoc" android:id="@+id/trongnuoc" android:icon="@drawable/trongnuoc"/>
-    <item android:title="The gioi" android:id="@+id/thegioi" android:icon="@drawable/thegioi" />
-    <item android:title="Doc La" android:id="@+id/docla" android:icon="@drawable/docla"/>
-    <item android:title="Giao duc" android:id="@+id/giaoduc" android:icon="@drawable/giaoduc"/>
-    <item android:title="Giai tri" android:id="@+id/giaitri" android:icon="@drawable/giaitri"/>
-    <item android:title="Cong nghe" android:id="@+id/congnghe" android:icon="@drawable/congnghe"/>
-    <item android:title="Am thuc" android:id="amthuc" android:icon="@drawable/amthuc"/>
-    <item android:title="Suc khoe" android:id="suckhoe" android:icon="@drawable/suckhoe"/>
+    <item android:title="Mới nhất" android:id="@+id/moinhat" android:icon="@drawable/moinhat"/>
+    <item android:title="Trong nước" android:id="@+id/trongnuoc" android:icon="@drawable/trongnuoc"/>
+<!--    <item android:title="Thế giới" android:id="@+id/thegioi" android:icon="@drawable/thegioi" />-->
+<!--    <item android:title="Độc Lạ" android:id="@+id/docla" android:icon="@drawable/docla"/>-->
+<!--    <item android:title="Giáo dục" android:id="@+id/giaoduc" android:icon="@drawable/giaoduc"/>-->
+<!--    <item android:title="Giải trí" android:id="@+id/giaitri" android:icon="@drawable/giaitri"/>-->
+<!--    <item android:title="Công nghệ" android:id="@+id/congnghe" android:icon="@drawable/congnghe"/>-->
+<!--    <item android:title="Ẩm thực" android:id="amthuc" android:icon="@drawable/amthuc"/>-->
+<!--    <item android:title="Sức khỏe" android:id="suckhoe" android:icon="@drawable/suckhoe"/>-->
 </menu>
