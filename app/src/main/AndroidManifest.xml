@@ -17,19 +17,10 @@
             android:resource="@xml/tuychon" />
 
         <activity
-            android:name=".chinhsuayeuthich"
-            android:exported="false" />
-        <activity
             android:name=".mucyeuthich"
             android:exported="false" />
         <activity
-            android:name=".chinhsualichsu"
-            android:exported="false" />
-        <activity
             android:name=".lichsu"
-            android:exported="false" />
-        <activity
-            android:name=".tuychon"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
