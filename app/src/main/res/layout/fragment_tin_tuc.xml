@@ -18,10 +18,11 @@
 
             <ImageButton
                 android:id="@+id/logoheader"
-                android:layout_width="267dp"
+                android:layout_width="wrap_content"
                 android:layout_height="75dp"
                 android:background="#80B3DC"
                 android:src="@drawable/logoheader" />
+
             <!--        <SearchView-->
             <!--            android:id="@+id/search"-->
             <!--            android:layout_width="90dp"-->
@@ -35,20 +36,20 @@
             android:layout_height="5dp"
             android:background="#56EAE3E3"/>
         <androidx.constraintlayout.widget.ConstraintLayout
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".Tintuc">
+
             <ScrollView
-                android:id="@+id/topNavigationView"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/topSCROLLView"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                >
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
                 <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/topNavigationView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#80B3DC"
@@ -56,13 +57,18 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:menu="@menu/tuychon" />
             </ScrollView>
+
             <FrameLayout
                 android:id="@+id/main_fragment_tintuc"
-                android:layout_margin="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/topNavigationView"/>
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="50dp"
+                android:layout_marginTop="7dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topSCROLLView"
+                app:layout_constraintVertical_bias="0.515" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

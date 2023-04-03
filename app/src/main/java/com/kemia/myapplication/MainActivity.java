@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature((Window.FEATURE_ACTION_BAR));
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
+        Fragment fmnew = new TinTucFragment();
+        loadFragment(fmnew);
         mnBottom = findViewById(R.id.bottomNavigationView);
         //
 
