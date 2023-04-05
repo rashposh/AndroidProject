@@ -1,22 +1,28 @@
 package com.kemia.myapplication.fragment_tuychon;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 
 import com.google.android.material.textview.MaterialTextView;
 import com.kemia.myapplication.Fetch.Fetch;
 import com.kemia.myapplication.Fetch.GoogleNews;
 import com.kemia.myapplication.Fetch.GoogleNewsHandler;
+import com.kemia.myapplication.Fetch.GoogleNewsItem;
 import com.kemia.myapplication.R;
+import com.kemia.myapplication.webview;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,6 +45,25 @@ public class NongFragment extends Fragment {
 
     public NongFragment() {
         // Required empty public constructor
+    }
+
+    public NongFragment(SearchView searchView) {
+        searchView.setOnClickListener(view -> {
+            System.out.println("VL");
+        });
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                resetItem();
+                getItemFromInternet(s);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        }) ;
     }
 
     /**
@@ -68,6 +93,7 @@ public class NongFragment extends Fragment {
         }
     }
 
+    Button btn;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -75,32 +101,52 @@ public class NongFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_nong, container, false);
 
         layout = (LinearLayout) view.findViewById(R.id.nongLinear);
-        this.container = container;
-        var t = new Fetch();
-        var a = new GoogleNewsHandler("a", this::addItem);
 
-        t.execute(a);
+
+        this.container = container;
+        getItemFromInternet("");
 
         return view;
     }
 
+    private void getItemFromInternet(String url) {
+        var fetch = new Fetch(url);
+        var handler = new GoogleNewsHandler(url, this::addItem);
+
+        fetch.execute(handler);
+    }
+
+    private void resetItem() {
+        layout.removeAllViews();
+    }
+
     private void addItem(GoogleNews googleNews) {
         for (var item : googleNews.getItems()) {
-            layout.addView(test(item.getTitle()));
+            layout.addView(createNewCard(item));
         }
 
     }
 
-    private View test(String text) {
+    private View createNewCard(GoogleNewsItem googleNewsItem) {
         // inflate (create) another copy of our custom layout
         LayoutInflater newsInflater = getLayoutInflater();
         View myLayout = newsInflater.inflate(R.layout.new_item, container, false);
 
         for (View item : getAllChildren(myLayout)) {
             if (item instanceof MaterialTextView) {
-                ((MaterialTextView) item).setText(text);
+                ((MaterialTextView) item).setText(googleNewsItem.getTitle());
+            }
+            if (item instanceof AppCompatImageView) {
+                if (!Objects.isNull(googleNewsItem.getImgBitMap()))
+                    ((AppCompatImageView) item).setImageBitmap(googleNewsItem.getImgBitMap());
             }
         }
+
+        myLayout.setOnClickListener(view -> {
+            var intent = new Intent(getActivity(), webview.class);
+            intent.putExtra("url", googleNewsItem.getLink());
+            startActivity(intent);
+        });
 
         return myLayout;
     }

@@ -41,10 +41,22 @@ public class Fetch extends AsyncTask<GoogleNewsHandler, Integer, ArrayList<Googl
 
     }
 
+    private String search;
+
+    public Fetch() {
+        this.search = "";
+    }
+
+    public Fetch(String search) {
+        this.search = search.trim();
+    }
 
     public String GetAndCreateData() {
         try {
             URL url = new URL("https://news.google.com/rss?hl=vi&gl=VN&ceid=VN:vi");
+            if (search.length() != 0) {
+                url = new URL("https://news.google.com/rss/search?q="+this.search+"&hl=vi&gl=VN&ceid=VN:vi");
+            }
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestProperty("Accept", "application/xml");
 

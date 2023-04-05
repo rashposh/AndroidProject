@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import com.google.android.material.navigation.NavigationBarView;
 import com.kemia.myapplication.R;
@@ -29,6 +30,7 @@ public class TinTucFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private SearchView searchView;
 
     private NavigationBarView topNavigationView;
 
@@ -71,26 +73,9 @@ public class TinTucFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tin_tuc, container, false);
-
-        System.out.println("ca nsuic");
-        topNavigationView = (NavigationBarView) view.findViewById(R.id.topNavigationView);
-
-        topNavigationView.setOnItemSelectedListener(item -> {
-            Fragment fm;
-            switch (item.getItemId())
-            {
-                case R.id.nong:
-                    fm = new NongFragment();
-                    loadFragment(fm);
-                    return true;
-                case R.id.moinhat:
-                    fm = new MoiFragment();
-                    loadFragment(fm);
-                    return true;
-            }
-            return true;
-        });
-
+        searchView = view.findViewById(R.id.searchView);
+        NongFragment fm = new NongFragment(searchView);
+        loadFragment(fm);
 
         return view;
     }

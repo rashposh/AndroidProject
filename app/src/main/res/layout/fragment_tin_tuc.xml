@@ -23,6 +23,13 @@
                 android:background="#80B3DC"
                 android:src="@drawable/logoheader" />
 
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right"
+                android:layoutDirection="rtl" />
+
             <!--        <SearchView-->
             <!--            android:id="@+id/search"-->
             <!--            android:layout_width="90dp"-->
@@ -40,35 +47,18 @@
             android:layout_height="match_parent"
             tools:context=".Tintuc">
 
-            <ScrollView
-                android:id="@+id/topSCROLLView"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.bottomnavigation.BottomNavigationView
-                    android:id="@+id/topNavigationView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#80B3DC"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:menu="@menu/tuychon" />
-            </ScrollView>
-
             <FrameLayout
                 android:id="@+id/main_fragment_tintuc"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_margin="50dp"
-                android:layout_marginTop="7dp"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="64dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.842"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/topSCROLLView"
-                app:layout_constraintVertical_bias="0.515" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

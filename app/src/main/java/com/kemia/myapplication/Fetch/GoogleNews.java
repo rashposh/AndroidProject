@@ -1,6 +1,12 @@
 package com.kemia.myapplication.Fetch;
 
 import org.w3c.dom.Node;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 
 
@@ -19,7 +25,7 @@ public class GoogleNews {
 
     public GoogleNews(Node channelNode) {
         var children = channelNode.getChildNodes();
-        for (int i = 0; i < children.getLength(); i++) {
+        for (int i = 0; i < children.getLength() && i < 20; i++) {
             var node = children.item(i);
             var nodeName = node.getNodeName();
             if (nodeName.equals("generator")) {
@@ -30,6 +36,7 @@ public class GoogleNews {
             }
             else if (nodeName.equals("link")) {
                 this.link = node.getTextContent();
+//                getRedirectedLink(link);
             }
             else if (nodeName.equals("language")) {
                 this.language = node.getTextContent();
@@ -52,6 +59,8 @@ public class GoogleNews {
             }
         }
     }
+
+
 
     public String getGenerator() {
         return generator;
