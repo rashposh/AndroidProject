@@ -19,6 +19,8 @@ public class webview extends Activity {
         Bundle bundle = getIntent().getExtras();
         String url = bundle.getString("url");
         wb = findViewById(R.id.webViewContent);
+        wb.getSettings().setSupportZoom(true);
+        wb.getSettings().setBuiltInZoomControls(true);
         close = findViewById(R.id.wvClose);
 //        System.out.println(wb);
         wb.getSettings().setJavaScriptEnabled(true);

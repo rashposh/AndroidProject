@@ -61,6 +61,12 @@
             android:text="CÔNG TY TNHH CÔNG NGHỆ MẠNG THÔNG TIN VIỆT NAM"
             android:textColor="@color/black"
             android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/mThemeSwitchButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="dark/light mode" />
     </LinearLayout>
 
 </FrameLayout>
