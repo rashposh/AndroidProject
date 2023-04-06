@@ -27,7 +27,7 @@ public class webview extends Activity {
         wb.setWebViewClient(new WebViewClient(){});
 
         wb.loadUrl(url);
-        System.out.println("a");
+
         close.setOnClickListener(view -> {
             finish();
         });
