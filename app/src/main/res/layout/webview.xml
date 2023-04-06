@@ -4,18 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".webview">
+    tools:context=".webview"
+    android:background="#E6E5E5">
 
     <Button
         android:id="@+id/wvClose"
-        android:layout_width="133dp"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/white"
+        android:layout_width="80dp"
+        android:layout_height="58dp"
+        android:backgroundTint="#E6E5E5"
+        android:text="."
         android:drawableLeft="@drawable/baseline_arrow_back_ios_24"
-        android:text="back"
-        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <ImageButton
+        android:id="@+id/logoheader"
+        android:layout_width="240dp"
+        android:layout_height="58dp"
+        android:background="#E6E5E5"
+        android:src="@drawable/img"
+        app:layout_constraintBottom_toBottomOf="@+id/btlike"
+        app:layout_constraintEnd_toStartOf="@+id/btlike"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/btlike"
+        android:layout_width="90dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#E6E5E5"
+        android:text="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:drawableEnd="@drawable/like"
+        />
 
     <WebView
         android:id="@+id/webViewContent"
@@ -24,5 +44,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wvClose" />
+        app:layout_constraintTop_toBottomOf="@+id/wvClose">
+
+    </WebView>
 </androidx.constraintlayout.widget.ConstraintLayout>
