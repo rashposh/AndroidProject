@@ -127,7 +127,7 @@ public class NongFragment extends Fragment {
     }
 
     private View createNewCard(GoogleNewsItem googleNewsItem) {
-        // inflate (create) another copy of our custom layout
+    // inflate (create) another copy of our custom layout
         LayoutInflater newsInflater = getLayoutInflater();
         View myLayout = newsInflater.inflate(R.layout.new_item, container, false);
 

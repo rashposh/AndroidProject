@@ -87,8 +87,13 @@ public class Fetch extends AsyncTask<GoogleNewsHandler, Integer, ArrayList<Googl
     @Override
     protected void onPostExecute(ArrayList<GoogleNewsHandler> googleNewsHandlers) {
         super.onPostExecute(googleNewsHandlers);
-        for (var ggNewHandler : googleNewsHandlers) {
-            ggNewHandler.getHandler().accept(ggNewHandler.getGoogleNews());
+        try {
+            for (var ggNewHandler : googleNewsHandlers) {
+                ggNewHandler.getHandler().accept(ggNewHandler.getGoogleNews());
+            }
+        }
+        catch (Exception ignored){
+
         }
     }
 }
