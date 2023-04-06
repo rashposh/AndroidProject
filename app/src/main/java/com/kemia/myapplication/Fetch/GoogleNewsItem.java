@@ -6,13 +6,10 @@ import android.graphics.BitmapFactory;
 import org.w3c.dom.Node;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 
@@ -91,7 +88,7 @@ public class GoogleNewsItem {
             text2 = text2.substring(text2.indexOf("http"));
             text2 = text2.substring(0, text2.indexOf("\""));
 
-            InputStream in = new java.net.URL(text2).openStream();
+            InputStream in = new URL(text2).openStream();
             this.imgBitMap = BitmapFactory.decodeStream(in);
         } catch (Exception e) {
             this.imgBitMap = null;
