@@ -11,7 +11,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <item name="android:textColor">?attr/button_color</item>
+        <item name="android:textColor">@color/pink</item>
     </style>
 
     <style name="Theme.MyApplication.Fullscreen" parent="Theme.MyApplication">

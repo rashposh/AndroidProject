@@ -20,8 +20,8 @@
                 android:id="@+id/logoheader"
                 android:layout_width="wrap_content"
                 android:layout_height="75dp"
-                android:background="#E6E5E5"
-                android:src="@drawable/img" />
+                android:background="#80B3DC"
+                android:src="@drawable/logoheader" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -29,7 +29,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#E6E5E5"
+                    android:background="#80B3DC"
                     />
                 <SearchView
                     android:id="@+id/searchView"
@@ -44,7 +44,10 @@
 
         </LinearLayout>
 
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#cccccc"/>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

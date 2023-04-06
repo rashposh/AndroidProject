@@ -7,17 +7,13 @@ import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.function.Consumer;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -91,8 +87,13 @@ public class Fetch extends AsyncTask<GoogleNewsHandler, Integer, ArrayList<Googl
     @Override
     protected void onPostExecute(ArrayList<GoogleNewsHandler> googleNewsHandlers) {
         super.onPostExecute(googleNewsHandlers);
-        for (var ggNewHandler : googleNewsHandlers) {
-            ggNewHandler.getHandler().accept(ggNewHandler.getGoogleNews());
+        try {
+            for (var ggNewHandler : googleNewsHandlers) {
+                ggNewHandler.getHandler().accept(ggNewHandler.getGoogleNews());
+            }
+        }
+        catch (Exception ignored){
+
         }
     }
 }
