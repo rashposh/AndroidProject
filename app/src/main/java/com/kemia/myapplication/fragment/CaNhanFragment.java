@@ -5,7 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Switch;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.kemia.myapplication.R;
@@ -67,5 +70,14 @@ public class CaNhanFragment extends Fragment {
 
 
         return view;
+    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        String about = getString(R.string.about);
+        String description = about + "\nPhan Thiên Ân \nTrung";
+        TextView textView = view.findViewById(R.id.textView);
+        textView.setText(description);
     }
 }
