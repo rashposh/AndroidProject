@@ -11,8 +11,6 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_webview_activivy">WebviewActivivy</string>
     <string name="search">qua môn</string>
-    <string name="about">Trần Công Dũng 21DH113548</string>
-    <string name="about1">Phan Thiên Ân</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

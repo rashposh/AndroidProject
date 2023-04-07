@@ -61,13 +61,6 @@
             android:text="CÔNG TY TNHH CÔNG NGHỆ MẠNG THÔNG TIN VIỆT NAM"
             android:textColor="@color/black"
             android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="274dp"
-            android:text="TextView"
-            android:textSize="25dp" />
     </LinearLayout>
 
 </FrameLayout>
