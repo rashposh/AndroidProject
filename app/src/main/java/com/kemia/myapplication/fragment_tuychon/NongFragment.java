@@ -13,6 +13,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textview.MaterialTextView;
+import com.kemia.myapplication.Data.Database;
 import com.kemia.myapplication.Fetch.Fetch;
 import com.kemia.myapplication.Fetch.GoogleNews;
 import com.kemia.myapplication.Fetch.GoogleNewsHandler;
@@ -123,7 +124,6 @@ public class NongFragment extends Fragment {
         for (var item : googleNews.getItems()) {
             layout.addView(createNewCard(item));
         }
-
     }
 
     private View createNewCard(GoogleNewsItem googleNewsItem) {
@@ -145,6 +145,10 @@ public class NongFragment extends Fragment {
             var intent = new Intent(getActivity(), webview.class);
             intent.putExtra("url", googleNewsItem.getLink());
             startActivity(intent);
+
+            Database db = new Database();
+            db.addNewsItem(googleNewsItem, getContext());
+
         });
 
         return myLayout;

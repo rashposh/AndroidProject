@@ -38,6 +38,14 @@ public class GoogleNewsItem {
         fetchImgUrl();
     }
 
+    public GoogleNewsItem(String title, String link, String description, String imgUrl, Bitmap img) {
+        this.title = title;
+        this.link = link;
+        this.description = description;
+        this.imgUrl = imgUrl;
+        this.pubDate = "";
+        this.imgBitMap = img;
+    }
 
     public void fetchImgUrl() {
 
@@ -71,7 +79,17 @@ public class GoogleNewsItem {
     }
 
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
 
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public void setImgBitMap(Bitmap imgBitMap) {
+        this.imgBitMap = imgBitMap;
+    }
 
     public String getPubDate() {
         return pubDate;

@@ -5,70 +5,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".lichsu">
+
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="horizontal">
+
             <Button
                 android:id="@+id/backLichsu"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/white"
-                android:text="ye"
                 android:drawableEnd="@drawable/baseline_keyboard_backspace_24"
-                />
+                android:text="ye" />
+
             <TextView
                 android:layout_width="190dp"
                 android:layout_height="match_parent"
-                android:text="Lịch sử"
-                android:textStyle="normal"
-                android:textSize="30sp"
                 android:gravity="center"
-                />
+                android:text="Lịch sử"
+                android:textSize="30sp"
+                android:textStyle="normal" />
 
 
         </LinearLayout>
-        <ScrollView
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/lsView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <LinearLayout
+            android:id="@+id/lsLinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:backgroundTint="#cccccc"
-                    android:text="noi dung bao da xem"
-                    />
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:backgroundTint="#cccccc"
-                    android:text="noi dung bao da xem"
-                    />
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:backgroundTint="#cccccc"
-                    android:text="noi dung bao da xem"
-                    />
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:backgroundTint="#cccccc"
-                    android:text="noi dung bao da xem"
-                    />
-            </LinearLayout>
-
-        </ScrollView>
-    </LinearLayout>
+            android:orientation="vertical" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

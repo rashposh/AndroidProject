@@ -3,51 +3,44 @@ package com.kemia.myapplication.Data;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
 import android.provider.ContactsContract;
+import com.kemia.myapplication.Data.DBContract.LSEntry;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
+    // If you change the database schema, you must increment the database version.
+    public static final int DATABASE_VERSION = 1;
+    public static final String DATABASE_NAME = "LMAO.db";
 
-    /*
-     * Tạo bảng cho cơ sở dữ liệu đã được tạo ở
-     * hàm khởi tạo thông qua lớp SQLiteDatabase
-     */
-    @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+    public DBHelper(@Nullable Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-    //constructors :KHOI TAO DATABASE
 
-    public DBHelper(Context context) {
-        super(context, TAO_BANG_DATABASE, null, 1);
-    }
-    // Tên cơ sở dữ liệu
-    private static final String TAO_BANG_DATABASE= "QuanLyNguoiDung";
-    // Tên bảng
-    public static final String TEN_BANG_DATABASE = "NguoiDung";
-    // Bảng gồm 3 cột
-    public static final String COT_ID = "_id";
-    public static final String COT_YEUTHICH = "_yeuthich";
-    public static final String COT_DAXEM = "_daxem";
-    /*
-     * Câu lện tạo bảng.
-     * Trong đó: “integer primary key autoincrement”
-     * là khóa chính tự tăng và có kiểu dữ liệu là int;
-     * “text not null” là không được để trống và kiểu
-     * dữ liệu là String.
-     */
-    private static final String DATABASE = ""
-            + "create table " + TEN_BANG_DATABASE + " ( "
-            + COT_ID + " integer primary key autoincrement ,"
-            + COT_YEUTHICH + " text not null, "
-            + COT_DAXEM + " text not null );";
+    private static final String SQL_CREATE_ENTRIES =
+            "CREATE TABLE " + LSEntry.TABLE_NAME + " (" +
+                    LSEntry.COLUMN_NAME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    LSEntry.COLUMN_NAME_TITLE + " TEXT," +
+                    LSEntry.COLUMN_NAME_DUONG_DAN + " TEXT," +
+                    LSEntry.COLUMN_NAME_DC_ANH + " TEXT," +
+                    LSEntry.COLUMN_NAME_MO_TA + " TEXT," +
+                    LSEntry.COLUMN_NAME_IMG + " TEXT," +
+                    LSEntry.COLUMN_NAME_TG_NHAN + " DATETIME)";
 
-    /*
-     * Tạo bảng cho cơ sở dữ liệu đã được tạo ở
-     * hàm khởi tạo thông qua lớp SQLiteDatabase
-     */
-    @Override
+    private static final String SQL_DELETE_ENTRIES =
+            "DROP TABLE IF EXISTS " + LSEntry.TABLE_NAME;
+
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(DATABASE);
-        //Tao bang
+        db.execSQL(SQL_CREATE_ENTRIES);
+    }
+
+
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL(SQL_DELETE_ENTRIES);
+        onCreate(db);
+    }
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        onUpgrade(db, oldVersion, newVersion);
     }
 }

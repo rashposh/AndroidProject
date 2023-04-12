@@ -21,14 +21,10 @@ public class GoogleNews {
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
-//        for (int i = 0; i < array.length(); i++) {
-////            try {
-////                GoogleNewsItem googleNewsItem = new GoogleNewsItem(array.get(i));
-////            } catch (JSONException e) {
-////                throw new RuntimeException(e);
-////            }
-//        }
-//        items.add(googleNewsItem);
+    }
+
+    public GoogleNews(ArrayList<GoogleNewsItem> items) {
+        this.items = items;
     }
 
     public ArrayList<GoogleNewsItem> getItems() {

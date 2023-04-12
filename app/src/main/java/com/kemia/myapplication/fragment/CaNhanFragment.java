@@ -1,9 +1,12 @@
 package com.kemia.myapplication.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -12,6 +15,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.kemia.myapplication.R;
+import com.kemia.myapplication.lichsu;
+import com.kemia.myapplication.webview;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +24,8 @@ import com.kemia.myapplication.R;
  * create an instance of this fragment.
  */
 public class CaNhanFragment extends Fragment {
+
+    Button btLS;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -67,7 +74,12 @@ public class CaNhanFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_ca_nhan, container, false);
+        btLS = view.findViewById(R.id.btlichsu);
 
+        btLS.setOnClickListener(v -> {
+            var intent = new Intent(getActivity(), lichsu.class);
+            startActivity(intent);
+        });
 
         return view;
     }
@@ -79,5 +91,8 @@ public class CaNhanFragment extends Fragment {
         String description = about + "\nPhan Thiên Ân \nTrung";
         TextView textView = view.findViewById(R.id.textView);
         textView.setText(description);
+
+
+
     }
 }
