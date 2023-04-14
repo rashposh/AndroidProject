@@ -14,8 +14,8 @@ public class GoogleNews {
     public GoogleNews(JSONArray array) {
         try {
             for (int i = 0; i < array.length(); i++) {
-                var jsonObject = array.getJSONObject(i);
-                GoogleNewsItem item = new GoogleNewsItem(jsonObject);// tách mảng đó ra
+                var jsonObject = array.getJSONObject(i);// lấy đối tượng json object trong mảng
+                GoogleNewsItem item = new GoogleNewsItem(jsonObject);// tạo 1 đối tượng ggnewitem và truyền jsonobject vào hàm khỏi tạo của gg newitem
                 items.add(item);//bỏ vô đối tượng ggnewitiem
             }
         } catch (JSONException e) {

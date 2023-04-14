@@ -40,21 +40,7 @@ public class Database {
         helper.onUpgrade(database, 1, 1);
     }
 
-    public void addTestData(Context context) {
-        DBHelper helper = new DBHelper(context);
-        var database = helper.getWritableDatabase();
 
-        // Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(LSEntry.COLUMN_NAME_TITLE, "White House plans support for drugstores, pharma in abortion pill battle - Reuters");
-        values.put(LSEntry.COLUMN_NAME_DC_ANH, "https://www.reuters.com/resizer/C_-G6dROTSNB-YBuMMuhLitTid4=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/3QZTAV5P25OYVHTNB4L4XOLL4I.jpg");
-        values.put(LSEntry.COLUMN_NAME_DUONG_DAN, "https://www.reuters.com/world/us/white-house-plans-support-drugstores-pharma-abortion-pill-battle-sources-2023-04-09/");
-        values.put(LSEntry.COLUMN_NAME_MO_TA, "The White House is planning to re-up discussions with abortion pill manufacturers and U.S. pharmacy chains on ways to push back against efforts to ban mifepristone, two sources with knowledge of the matter said, as it appeals a Texas court ruling suspending t…");
-        values.put(LSEntry.COLUMN_NAME_TG_NHAN, "2023-04-11 23:38:20");
-
-        // Insert the new row, returning the primary key value of the new row
-        long newRowId = database.insert(LSEntry.TABLE_NAME, null, values);
-    }
 
     public void addNewsItem(GoogleNewsItem item, Context context) {
 

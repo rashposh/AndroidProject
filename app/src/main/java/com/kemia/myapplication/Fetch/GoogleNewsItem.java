@@ -25,7 +25,7 @@ public class GoogleNewsItem {
     private Bitmap imgBitMap;
 
 
-    public GoogleNewsItem(JSONObject jsonObject) {
+    public GoogleNewsItem(JSONObject jsonObject) {// nhận dữ liệu json và gán thuôc tính vào
         try {
             this.title = jsonObject.getString("title");
             this.description=jsonObject.getString("description");
@@ -38,7 +38,7 @@ public class GoogleNewsItem {
         fetchImgUrl();
     }
 
-    public GoogleNewsItem(String title, String link, String description, String imgUrl, Bitmap img) {
+    public GoogleNewsItem(String title, String link, String description, String imgUrl, Bitmap img) {//tạo dạng truyền thống
         this.title = title;
         this.link = link;
         this.description = description;
@@ -50,8 +50,8 @@ public class GoogleNewsItem {
     public void fetchImgUrl() {
 
         try {
-            InputStream in = new URL(imgUrl).openStream();// dựa địa chỉ lấy dữ liệu
-            this.imgBitMap = BitmapFactory.decodeStream(in);
+            InputStream in = new URL(imgUrl).openStream();// dựa địa chỉ của thuộc tính imgUrl,mở đường truyền và lấy về dữ liệu
+            this.imgBitMap = BitmapFactory.decodeStream(in);// dựa vào dữ liệu đó và biến nó thành 1 hình ảnh
         } catch (Exception e) {
             this.imgBitMap = null;
         }

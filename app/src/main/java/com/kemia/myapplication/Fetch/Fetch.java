@@ -47,24 +47,23 @@ public class Fetch extends AsyncTask<GoogleNewsHandler, Integer, ArrayList<Googl
 
     public String GetAndCreateData() {
         try {
-//            https://newsapi.org/v2/top-headlines?country=us&apiKey=0ffdd425a4cb4a3bb8920d5f23459f7f
-            URL url = new URL("https://newsapi.org/v2/top-headlines?country=us&apiKey=0ffdd425a4cb4a3bb8920d5f23459f7f");
+            URL url = new URL("https://newsapi.org/v2/top-headlines?country=us&apiKey=0ffdd425a4cb4a3bb8920d5f23459f7f");//lấy báo mới nhất từ api của new api
             if (search.length() != 0) {
-                url = new URL("https://newsapi.org/v2/everything?q="+this.search+"&apiKey=0ffdd425a4cb4a3bb8920d5f23459f7f");
+                url = new URL("https://newsapi.org/v2/everything?q="+this.search+"&apiKey=0ffdd425a4cb4a3bb8920d5f23459f7f");//nếu tìm kiếm trên thanh tìm kiếm nó sẽ tìm theo thanh tìm kiếm
             }
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestProperty("Accept", "application/json");
-            conn.setRequestProperty("User-Agent", "Mozilla/5.0");
-            conn.setRequestMethod("GET");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();// mở cổng kết nối với địa chỉ 2 trên
+            conn.setRequestProperty("Accept", "application/json");//nhận giá trị trả về chỉ nhận dạng theo dạng jason
+            conn.setRequestProperty("User-Agent", "Mozilla/5.0");// để new api biết nó từ trình duyệt gì
+            conn.setRequestMethod("GET");//gửi thông tin đó dưới dạng get (dạng lấy dữ liệu) (post là dạng đăng dữ liệu lên trang wed)
             BufferedReader br = null;
-            if (100 <= conn.getResponseCode() && conn.getResponseCode() <= 399) {
-                br = new BufferedReader(new InputStreamReader(conn.getInputStream()));//check mã trả về đúng không
+            if (100 <= conn.getResponseCode() && conn.getResponseCode() <= 399) {//check mã trả về đúng không
+                br = new BufferedReader(new InputStreamReader(conn.getInputStream()));// nếu đúng thì nó sẽ đọc từ InputStream
             } else {
-                br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+                br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));// kh thì đọc dòng dữ liệu của lỗi
             }
             String content = "", line;
             while ((line = br.readLine()) != null) {
-                content += line + "\n";
+                content += line + "\n";//cho từng các dòng trong BufferedReader thì nó sẽ thêm vô trong cái chuỗi content
             }
             return content;
         } catch (IOException e) {
