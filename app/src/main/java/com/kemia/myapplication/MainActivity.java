@@ -11,16 +11,10 @@ import android.view.Window;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.kemia.myapplication.Data.Database;
 import com.kemia.myapplication.fragment.CaNhanFragment;
 import com.kemia.myapplication.fragment.HistoryFragment;
+import com.kemia.myapplication.fragment.LikeFragment;
 import com.kemia.myapplication.fragment.TinTucFragment;
-
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView mnBottom;
@@ -70,7 +64,11 @@ public class MainActivity extends AppCompatActivity {
                         fmNew = new HistoryFragment();
                         loadFragment(fmNew);
                         return true;
-
+                    case R.id.like:
+                        getSupportActionBar().setTitle(item.getTitle());
+                        fmNew = new LikeFragment();
+                        loadFragment(fmNew);
+                        return true;
                     case R.id.self:
                         getSupportActionBar().setTitle(item.getTitle());
                         fmNew = new TinTucFragment();

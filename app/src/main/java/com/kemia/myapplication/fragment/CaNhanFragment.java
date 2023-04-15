@@ -88,11 +88,8 @@ public class CaNhanFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         String about = getString(R.string.about);
-        String description = about + "\nPhan Thiên Ân \nTrung";
+        String description = about + "\n \nPhan Thiên Ân \n \nDương Toàn Trung";
         TextView textView = view.findViewById(R.id.textView);
         textView.setText(description);
-
-
-
     }
 }

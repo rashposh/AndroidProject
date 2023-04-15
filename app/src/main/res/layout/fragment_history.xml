@@ -29,7 +29,7 @@
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/textView4">
 
             <LinearLayout
                 android:id="@+id/lsLinear"
@@ -37,6 +37,19 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
         </ScrollView>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="413dp"
+            android:layout_height="46dp"
+            android:text="lịch sử"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:textSize="40dp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

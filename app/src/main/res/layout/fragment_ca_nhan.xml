@@ -9,26 +9,17 @@
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="730dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context=".canhan"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/btyeuthich"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:backgroundTint="@color/white"
-            android:textSize="35sp"
-            android:hint="Muc yeu thich"
-            android:textStyle="bold"
-            android:drawableLeft="@drawable/baseline_favorite_24"
-            />
+        android:background="@drawable/about">
 
         <TextView
+            android:textStyle="bold"
+            android:textSize="30dp"
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="278dp"
+            android:layout_height="match_parent"
             android:text="TextView" />
     </LinearLayout>
 

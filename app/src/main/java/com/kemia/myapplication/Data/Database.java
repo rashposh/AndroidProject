@@ -152,7 +152,5 @@ public class Database {
         cursor.close();
         return new GoogleNews(items);
     }
-
-
 }
 

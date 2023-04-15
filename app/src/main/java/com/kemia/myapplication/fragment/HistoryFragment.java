@@ -88,7 +88,6 @@ public class HistoryFragment extends Fragment {
                     ((AppCompatImageView) item).setImageBitmap(googleNewsItem.getImgBitMap());
             }
         }
-
         myLayout.setOnClickListener(view -> {
             var intent = new Intent(getActivity(), webview.class);
             intent.putExtra("url", googleNewsItem.getLink());

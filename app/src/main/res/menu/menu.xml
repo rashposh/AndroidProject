@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:title="tin tức" android:id="@+id/self" android:icon="@drawable/baseline_newspaper_24"/>
-    <item android:title="cá nhân" android:id="@+id/cc" android:icon="@drawable/baseline_person_24"/>
-
     <item android:title="yêu thích" android:id="@+id/like" android:icon="@drawable/baseline_favorite_24"/>
     <item android:title="lịch sử" android:id="@+id/lichsu" android:icon="@drawable/baseline_history_24"/>
+    <item android:title="about" android:id="@+id/cc" android:icon="@drawable/baseline_person_24"/>
 </menu>
