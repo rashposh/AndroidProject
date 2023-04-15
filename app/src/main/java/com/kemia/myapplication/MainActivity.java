@@ -13,6 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.kemia.myapplication.Data.Database;
 import com.kemia.myapplication.fragment.CaNhanFragment;
+import com.kemia.myapplication.fragment.HistoryFragment;
 import com.kemia.myapplication.fragment.TinTucFragment;
 
 import java.text.SimpleDateFormat;
@@ -64,6 +65,12 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fmNew;
                 switch (item.getItemId())
                 {
+                    case R.id.lichsu:
+                        getSupportActionBar().setTitle(item.getTitle());
+                        fmNew = new HistoryFragment();
+                        loadFragment(fmNew);
+                        return true;
+
                     case R.id.self:
                         getSupportActionBar().setTitle(item.getTitle());
                         fmNew = new TinTucFragment();
