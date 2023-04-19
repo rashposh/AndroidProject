@@ -3,10 +3,8 @@ package com.kemia.myapplication.Data;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.FileUtils;
 
 import com.kemia.myapplication.Data.DBContract.LSEntry;
 import com.kemia.myapplication.Fetch.GoogleNews;
@@ -17,10 +15,8 @@ import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -50,10 +46,19 @@ public class Database {
         addData(context, item.getTitle(),item.getImgUrl(), item.getLink(),item.getDescription(), tgNhan, item.getImgBitMap());
     }
 
+    public boolean checkIfExist(Context context, String duongDan) {
+        DBHelper helper = new DBHelper(context);
+        var database = helper.getReadableDatabase();
+
+        String query = String.format("SELECT * FROM %s WHERE %s='%s'", LSEntry.TABLE_NAME, LSEntry.COLUMN_NAME_DUONG_DAN, duongDan);
+        var cur = database.rawQuery(query, null);
+
+        return cur.moveToNext();
+    }
+
     public void addData(Context context, String TITLE, String DC_ANH, String DUONG_DAN, String MO_TA, String TG_NHAN, Bitmap IMG) {
 
-        DBHelper helper = new DBHelper(context);
-        var database = helper.getWritableDatabase();
+
 
         if (Objects.isNull(IMG)) {
             IMG = BitmapFactory.decodeResource(context.getResources(), R.drawable.bruh);
@@ -86,8 +91,25 @@ public class Database {
         values.put(LSEntry.COLUMN_NAME_TG_NHAN, TG_NHAN);
         values.put(LSEntry.COLUMN_NAME_IMG, file.getAbsolutePath());
 
-        // Insert the new row, returning the primary key value of the new row
-        long newRowId = database.insert(LSEntry.TABLE_NAME, null, values);
+
+
+        if (checkIfExist(context, DUONG_DAN)) {
+            DBHelper helper = new DBHelper(context);
+            var database = helper.getWritableDatabase();
+
+            // Insert the new row, returning the primary key value of the new row
+            long newRowId = database.update(LSEntry.TABLE_NAME, values, LSEntry.COLUMN_NAME_TITLE+"=?", new String[]{TITLE});
+
+        }
+        else {
+            DBHelper helper = new DBHelper(context);
+            var database = helper.getWritableDatabase();
+
+            // Insert the new row, returning the primary key value of the new row
+            long newRowId = database.insert(LSEntry.TABLE_NAME, null, values);
+
+        }
+
     }
 
 
@@ -151,6 +173,15 @@ public class Database {
         }
         cursor.close();
         return new GoogleNews(items);
+    }
+
+
+    public void deleteItem(Context context,GoogleNewsItem newsItem) {
+        DBHelper helper = new DBHelper(context);
+        var database = helper.getWritableDatabase();
+
+        database.delete(LSEntry.TABLE_NAME, LSEntry.COLUMN_NAME_DUONG_DAN+"=?", new String[]{newsItem.getLink()});
+
     }
 }
 

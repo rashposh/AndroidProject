@@ -3,16 +3,21 @@ package com.kemia.myapplication.fragment_tuychon;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.SearchView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textview.MaterialTextView;
+import com.kemia.myapplication.Adapter.NewItemAdapter;
 import com.kemia.myapplication.Data.Database;
 import com.kemia.myapplication.Fetch.Fetch;
 import com.kemia.myapplication.Fetch.GoogleNews;
@@ -31,7 +36,7 @@ import java.util.Objects;
  */
 public class NongFragment extends Fragment {
 
-    LinearLayout layout;
+    RecyclerView recyclerView;
     private ViewGroup container;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -100,78 +105,40 @@ public class NongFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_nong, container, false);
 
-        layout = (LinearLayout) view.findViewById(R.id.nongLinear);
+        recyclerView = (RecyclerView) view.findViewById(R.id.rvNewItem);
+
 
 
         this.container = container;
         getItemFromInternet("");
 
+        var adapter = new NewItemAdapter(items);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+
         return view;
     }
 
+    private ArrayList<GoogleNewsItem> items = new ArrayList<>();
+
     private void getItemFromInternet(String url) {
         var fetch = new Fetch(url);
-        var handler = new GoogleNewsHandler(url, this::addItem);
+        var handler = new GoogleNewsHandler(url, this::createView);
 
         fetch.execute(handler);
     }
 
     private void resetItem() {
-        layout.removeAllViews();
+        items.clear();
+        recyclerView.removeAllViews();
     }
 
-    private void addItem(GoogleNews googleNews) {
-        for (var item : googleNews.getItems()) {
-            layout.addView(createNewCard(item));
-        }
+    private void createView(GoogleNews googleNews) {
+        items.addAll(googleNews.getItems());
+        var adapter = new NewItemAdapter(items);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
 
-    private View createNewCard(GoogleNewsItem googleNewsItem) {
-    // inflate (create) another copy of our custom layout
-        LayoutInflater newsInflater = getLayoutInflater();
-        View myLayout = newsInflater.inflate(R.layout.new_item, container, false);
-
-        for (View item : getAllChildren(myLayout)) {
-            if (item instanceof MaterialTextView) {
-                ((MaterialTextView) item).setText(googleNewsItem.getTitle());
-            }
-            if (item instanceof AppCompatImageView) {
-                if (!Objects.isNull(googleNewsItem.getImgBitMap()))
-                    ((AppCompatImageView) item).setImageBitmap(googleNewsItem.getImgBitMap());
-            }
-        }
-
-        myLayout.setOnClickListener(view -> {
-            var intent = new Intent(getActivity(), webview.class);
-            intent.putExtra("url", googleNewsItem.getLink());
-            startActivity(intent);
-
-            Database db = new Database();
-            db.addNewsItem(googleNewsItem, getContext());
-
-        });
-
-        return myLayout;
-    }
-
-    private ArrayList<View> getAllChildren(View v) {
-
-        if (!(v instanceof ViewGroup)) {
-            ArrayList<View> viewArrayList = new ArrayList<View>();
-            viewArrayList.add(v);
-            return viewArrayList;
-        }
-
-        ArrayList<View> result = new ArrayList<View>();
-
-        ViewGroup viewGroup = (ViewGroup) v;
-        for (int i = 0; i < viewGroup.getChildCount(); i++) {
-
-            View child = viewGroup.getChildAt(i);
-
-            //Do not add any parents, just add child elements
-            result.addAll(getAllChildren(child));
-        }
-        return result;
-    }
 }

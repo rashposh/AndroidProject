@@ -31,7 +31,6 @@ public class lichsu extends AppCompatActivity {
         setContentView(R.layout.activity_lichsu);
         layout = findViewById(R.id.lsLinear);
         container = findViewById(R.id.lsView);
-
         Database db = new Database();
         addItem(db.readFromDatabase(getApplicationContext()));
 

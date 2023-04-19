@@ -22,7 +22,6 @@ public class webview extends Activity {
         wb.getSettings().setSupportZoom(true);
         wb.getSettings().setBuiltInZoomControls(true);
         close = findViewById(R.id.wvClose);
-//        System.out.println(wb);
         wb.getSettings().setJavaScriptEnabled(true);
         wb.setWebViewClient(new WebViewClient(){});
 
