@@ -19,7 +19,7 @@ import com.kemia.myapplication.webview;
 import java.util.List;
 import java.util.Objects;
 
-public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ViewHolder> {
+public class TinTucAdapter extends RecyclerView.Adapter<TinTucAdapter.ViewHolder> {
 
 
     @NonNull
@@ -105,7 +105,7 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.ViewHold
     private List<GoogleNewsItem> ggNewItems;
 
 
-    public NewItemAdapter(List<GoogleNewsItem> ggNewItems) {
+    public TinTucAdapter(List<GoogleNewsItem> ggNewItems) {
         this.ggNewItems = ggNewItems;
     }
 }
