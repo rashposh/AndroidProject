@@ -11,34 +11,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
-            android:id="@+id/lsView"
-            android:layout_width="413dp"
-            android:layout_height="671dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <LinearLayout
-                android:id="@+id/lsLinear"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-        </ScrollView>
-
         <TextView
             android:id="@+id/textView2"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:gravity="center"
             android:text="yêu thích"
             android:textColor="@color/black"
-            android:gravity="center"
             android:textSize="40dp"
             android:textStyle="italic"
-            app:layout_constraintBottom_toTopOf="@+id/lsView"
+            app:layout_constraintBottom_toTopOf="@+id/Likeview"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/Likeview"
+            android:layout_width="414dp"
+            android:layout_height="635dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

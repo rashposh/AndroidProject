@@ -1,33 +1,24 @@
 package com.kemia.myapplication.fragment_tuychon;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.SearchView;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatImageView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.textview.MaterialTextView;
-import com.kemia.myapplication.Adapter.NewItemAdapter;
-import com.kemia.myapplication.Data.Database;
+import com.kemia.myapplication.Adapter.TinTucAdapter;
 import com.kemia.myapplication.Fetch.Fetch;
 import com.kemia.myapplication.Fetch.GoogleNews;
 import com.kemia.myapplication.Fetch.GoogleNewsHandler;
 import com.kemia.myapplication.Fetch.GoogleNewsItem;
 import com.kemia.myapplication.R;
-import com.kemia.myapplication.webview;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -111,7 +102,7 @@ public class NongFragment extends Fragment {
         this.container = container;
         getItemFromInternet("");// nếu search trống thì nó lấy trang mới nhất
 
-        var adapter = new NewItemAdapter(items);//tạo adapter cho recyclerView
+        var adapter = new TinTucAdapter(items);//tạo adapter cho recyclerView
         recyclerView.setAdapter(adapter);//gán adapter đó cho recyclerView đó
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         return view;
@@ -132,7 +123,7 @@ public class NongFragment extends Fragment {
 
     private void createView(GoogleNews googleNews) {
         items.addAll(googleNews.getItems());// thêm toán bộ dữ liệu vào itiem đó
-        var adapter = new NewItemAdapter(items);
+        var adapter = new TinTucAdapter(items);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
