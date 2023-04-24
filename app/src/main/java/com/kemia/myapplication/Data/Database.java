@@ -40,13 +40,13 @@ public class Database {
 
     public void addNewsItem(GoogleNewsItem item, Context context) {
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
-        var currentTime = Calendar.getInstance().getTime();
-        var tgNhan = dateFormat.format(currentTime);
-        addData(context, item.getTitle(),item.getImgUrl(), item.getLink(),item.getDescription(), tgNhan, item.getImgBitMap());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);//tạo đối tượng để định dạng ngày thàng năm
+        var currentTime = Calendar.getInstance().getTime();// lấy thời gian hiện tại
+        var tgNhan = dateFormat.format(currentTime);//chỉnh sửa thời gian đó thành định dạng trên
+        addData(context, item.getTitle(),item.getImgUrl(), item.getLink(),item.getDescription(), tgNhan, item.getImgBitMap());//thêm dữ liệu vào sqlite
     }
 
-    public boolean checkIfExist(Context context, String duongDan) {
+    public boolean checkIfExist(Context context, String duongDan) {// kiểm tra nó có trong cở sở dữ liệu không
         DBHelper helper = new DBHelper(context);
         var database = helper.getReadableDatabase();
 
@@ -58,12 +58,9 @@ public class Database {
 
     public void addData(Context context, String TITLE, String DC_ANH, String DUONG_DAN, String MO_TA, String TG_NHAN, Bitmap IMG) {
 
-
-
-        if (Objects.isNull(IMG)) {
+        if (Objects.isNull(IMG)) {//nếu kh có ảnh thì cho ảnh bruh vào
             IMG = BitmapFactory.decodeResource(context.getResources(), R.drawable.bruh);
         }
-        // Create a new map of values, where column names are the keys
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         IMG.compress(Bitmap.CompressFormat.PNG, 100, bos);
         var img = bos.toByteArray();
@@ -93,11 +90,10 @@ public class Database {
 
 
 
-        if (checkIfExist(context, DUONG_DAN)) {
+        if (checkIfExist(context, DUONG_DAN)) {//nếu nó có trong sqlite thì đem nó lên trên
             DBHelper helper = new DBHelper(context);
             var database = helper.getWritableDatabase();
 
-            // Insert the new row, returning the primary key value of the new row
             long newRowId = database.update(LSEntry.TABLE_NAME, values, LSEntry.COLUMN_NAME_TITLE+"=?", new String[]{TITLE});
 
         }
@@ -105,7 +101,7 @@ public class Database {
             DBHelper helper = new DBHelper(context);
             var database = helper.getWritableDatabase();
 
-            // Insert the new row, returning the primary key value of the new row
+
             long newRowId = database.insert(LSEntry.TABLE_NAME, null, values);
 
         }
@@ -127,26 +123,21 @@ public class Database {
                 LSEntry.COLUMN_NAME_IMG
         };
 
-// Filter results WHERE "title" = 'My Title'
-        String selection = LSEntry.COLUMN_NAME_TITLE + " = ?";
-        String[] selectionArgs = { "%" };
-
-// How you want the results sorted in the resulting Cursor
         String sortOrder =
                 LSEntry.COLUMN_NAME_TG_NHAN + " DESC";
 
-        Cursor cursor = database.query(
-                LSEntry.TABLE_NAME,   // The table to query
-                projection,             // The array of columns to return (pass null to get all)
-                null,              // The columns for the WHERE clause
-                null,          // The values for the WHERE clause
-                null,                   // don't group the rows
-                null,                   // don't filter by row groups
-                sortOrder               // The sort order
+        Cursor cursor = database.query(//tra sqlite từng dòng
+                LSEntry.TABLE_NAME,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                sortOrder
         );
         ArrayList<GoogleNewsItem> items = new ArrayList<>();
-        while(cursor.moveToNext()) {
-            String itemTitle = cursor.getString(
+        while(cursor.moveToNext()) {// lấy từng dòng của cột
+            String itemTitle = cursor.getString(//lấy từng giá trị của cột
                     cursor.getColumnIndexOrThrow(LSEntry.COLUMN_NAME_TITLE));
             String itemLink = cursor.getString(
                     cursor.getColumnIndexOrThrow(LSEntry.COLUMN_NAME_DUONG_DAN));
@@ -157,18 +148,18 @@ public class Database {
             String imgLoc = cursor.getString(
                     cursor.getColumnIndexOrThrow(LSEntry.COLUMN_NAME_IMG));
 
-            File file = new File(imgLoc);
+            File file = new File(imgLoc);//tạo 1 đối tượng để đọc file từ vị trí hình ảnh
             byte[] data = new byte[(int) file.length()];
             try {
-                BufferedInputStream buf = new BufferedInputStream(new FileInputStream(file));
-                buf.read(data, 0, data.length);
+                BufferedInputStream buf = new BufferedInputStream(new FileInputStream(file));//tạo đối tượng để đọc
+                buf.read(data, 0, data.length);//đọc dữ liệu và truyền vào mảng data
                 buf.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            var img = BitmapFactory.decodeByteArray(data, 0, data.length);
+            var img = BitmapFactory.decodeByteArray(data, 0, data.length);//biến mảng chưas dư liệu đó thành ảnh
 
-            GoogleNewsItem ggNewItem = new GoogleNewsItem(itemTitle, itemLink,itemDescription,itemImgUrl, img);
+            GoogleNewsItem ggNewItem = new GoogleNewsItem(itemTitle, itemLink,itemDescription,itemImgUrl, img);//tạo biến theo dạng GoogleNewsItem
             items.add(ggNewItem);
         }
         cursor.close();

@@ -14,7 +14,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 
-public class GoogleNewsItem {
+public class GoogleNewsItem {// chứa dữ liệu của 1 bài báo
     private String title;
     private String link;
 

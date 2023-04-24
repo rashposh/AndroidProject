@@ -104,28 +104,24 @@ public class NongFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_nong, container, false);
-
         recyclerView = (RecyclerView) view.findViewById(R.id.rvNewItem);
 
 
 
         this.container = container;
-        getItemFromInternet("");
+        getItemFromInternet("");// nếu search trống thì nó lấy trang mới nhất
 
-        var adapter = new NewItemAdapter(items);
-        recyclerView.setAdapter(adapter);
+        var adapter = new NewItemAdapter(items);//tạo adapter cho recyclerView
+        recyclerView.setAdapter(adapter);//gán adapter đó cho recyclerView đó
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-
-
         return view;
     }
 
-    private ArrayList<GoogleNewsItem> items = new ArrayList<>();
+    private ArrayList<GoogleNewsItem> items = new ArrayList<>();// itiem là mảng động chứa nhiều dữ liệu của nhiều bài báo
 
     private void getItemFromInternet(String url) {
-        var fetch = new Fetch(url);
+        var fetch = new Fetch(url);//tạo đối tượng fetch và truyền địa chỉ nó vào
         var handler = new GoogleNewsHandler(url, this::createView);
-
         fetch.execute(handler);
     }
 
@@ -135,10 +131,9 @@ public class NongFragment extends Fragment {
     }
 
     private void createView(GoogleNews googleNews) {
-        items.addAll(googleNews.getItems());
+        items.addAll(googleNews.getItems());// thêm toán bộ dữ liệu vào itiem đó
         var adapter = new NewItemAdapter(items);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
-
 }

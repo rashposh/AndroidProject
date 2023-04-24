@@ -7,7 +7,7 @@ import org.w3c.dom.Node;
 import java.util.ArrayList;
 
 
-public class GoogleNews {
+public class GoogleNews {// chứa tổng dữ liệu thông tin của toàn bộ api
 
     private ArrayList<GoogleNewsItem> items = new ArrayList<>();
 

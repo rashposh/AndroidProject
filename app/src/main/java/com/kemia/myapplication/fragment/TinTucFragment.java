@@ -72,7 +72,6 @@ public class TinTucFragment extends Fragment {
         searchView = view.findViewById(R.id.searchView);
         NongFragment fm = new NongFragment(searchView);
         loadFragment(fm);
-
         return view;
     }
 

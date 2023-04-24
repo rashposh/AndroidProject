@@ -69,32 +69,13 @@ public class HistoryFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-    private ArrayList<View> getAllChildren(View v) {
 
-        if (!(v instanceof ViewGroup)) {
-            ArrayList<View> viewArrayList = new ArrayList<View>();
-            viewArrayList.add(v);
-            return viewArrayList;
-        }
-
-        ArrayList<View> result = new ArrayList<View>();
-
-        ViewGroup viewGroup = (ViewGroup) v;
-        for (int i = 0; i < viewGroup.getChildCount(); i++) {
-
-            View child = viewGroup.getChildAt(i);
-
-            //Do not add any parents, just add child elements
-            result.addAll(getAllChildren(child));
-        }
-        return result;
-    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_history, container, false);
-        this.recyclerView = rootView.findViewById(R.id.lsView);
-        this.delAllBtn = rootView.findViewById(R.id.lsDelBtn);
+        View view = inflater.inflate(R.layout.fragment_history, container, false);
+        this.recyclerView = view.findViewById(R.id.lsView);
+        this.delAllBtn = view.findViewById(R.id.lsDelBtn);
 
         setupView();
 
@@ -104,7 +85,7 @@ public class HistoryFragment extends Fragment {
             setupView();
         });
 
-        return rootView;
+        return view;
         // Inflate the layout for this fragment
     }
 
