@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.kemia.myapplication.Data.DBContract.LSEntry;
+import com.kemia.myapplication.Data.LSEntry;
 import com.kemia.myapplication.Fetch.GoogleNews;
 import com.kemia.myapplication.Fetch.GoogleNewsItem;
 import com.kemia.myapplication.R;
@@ -62,13 +62,13 @@ public class Database {
             IMG = BitmapFactory.decodeResource(context.getResources(), R.drawable.bruh);
         }
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        IMG.compress(Bitmap.CompressFormat.PNG, 100, bos);
+        IMG.compress(Bitmap.CompressFormat.PNG, 100, bos);// biến ảnh thành 1 mảng dữ liệu
         var img = bos.toByteArray();
-        File directory = context.getFilesDir();
-        File file = new File(directory,TG_NHAN+".png");
+        File directory = context.getFilesDir();//lấy vị trí của ứng dụng
+        File file = new File(directory,TG_NHAN+".png");// vị trí file chứa dữ liệu
         if (!file.exists()) {
             try {
-                file.createNewFile();
+                file.createNewFile();//taọ file dựa vào vị trí đó
 
                 FileOutputStream fos = new FileOutputStream(file);
                 fos.write(bos.toByteArray());
@@ -80,7 +80,7 @@ public class Database {
         }
 
 
-        ContentValues values = new ContentValues();
+        ContentValues values = new ContentValues();// đặt tên cho từng cột trong csdl
         values.put(LSEntry.COLUMN_NAME_TITLE, TITLE);
         values.put(LSEntry.COLUMN_NAME_DC_ANH, DC_ANH);
         values.put(LSEntry.COLUMN_NAME_DUONG_DAN, DUONG_DAN);
@@ -102,7 +102,7 @@ public class Database {
             var database = helper.getWritableDatabase();
 
 
-            long newRowId = database.insert(LSEntry.TABLE_NAME, null, values);
+            long newRowId = database.insert(LSEntry.TABLE_NAME, null, values);//thêm vào csdl
 
         }
 
@@ -112,7 +112,7 @@ public class Database {
     public GoogleNews readFromDatabase(Context context) {
 
         DBHelper helper = new DBHelper(context);
-        var database = helper.getReadableDatabase();
+        var database = helper.getReadableDatabase();//lấy csdl
 
         String[] projection = {
                 LSEntry.COLUMN_NAME_TITLE,

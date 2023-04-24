@@ -18,12 +18,7 @@
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/tuychon" />
-        <activity
-            android:name=".mucyeuthich"
-            android:exported="false" />
-        <activity
-            android:name=".lichsu"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -37,9 +32,6 @@
             <!-- android:name="android.app.lib_name" -->
             <!-- android:value="" /> -->
         </activity>
-        <activity
-            android:name=".BaoMoiActivity"
-            android:exported="true" />
         <activity
             android:name=".webview"
             android:exported="true" />

@@ -89,14 +89,14 @@ public class HistoryFragment extends Fragment {
         // Inflate the layout for this fragment
     }
 
-    private void setupView() {
+    private void setupView(){//tạo lại
         Database db = new Database();
         var ggN = db.readFromDatabase(getActivity().getApplicationContext());
 
         items.clear();
         createView(ggN);
     }
-    private void createView(GoogleNews googleNews) {
+    private void createView(GoogleNews googleNews) {//tạo bảng
         items.addAll(googleNews.getItems());
         var adapter = new LSAdapter(items);
         recyclerView.setAdapter(adapter);

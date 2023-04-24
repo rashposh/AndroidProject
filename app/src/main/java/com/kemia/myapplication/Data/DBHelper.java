@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.provider.ContactsContract;
-import com.kemia.myapplication.Data.DBContract.LSEntry;
+import com.kemia.myapplication.Data.LSEntry;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
