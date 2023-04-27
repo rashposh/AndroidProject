@@ -41,11 +41,9 @@ public class YTAdapter extends RecyclerView.Adapter<YTAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull YTAdapter.ViewHolder holder, int position) {
-        // Get the data model based on position
 
         GoogleNewsItem ggNewItem = ggNewItems.get(position);
         final int pos = position;
-        // Set item views based on your views and data model
         TextView textView = holder.nameTextView;
         textView.setText(ggNewItem.getTitle());
         ImageView imageView = holder.imageView;
@@ -92,8 +90,6 @@ public class YTAdapter extends RecyclerView.Adapter<YTAdapter.ViewHolder> {
     public int getItemCount() {
         return ggNewItems.size();
     }
-
-
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView nameTextView;

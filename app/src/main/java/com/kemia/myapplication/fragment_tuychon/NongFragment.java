@@ -44,9 +44,7 @@ public class NongFragment extends Fragment {
     }
 
     public NongFragment(SearchView searchView) {
-        searchView.setOnClickListener(view -> {
-            System.out.println("VL");
-        });
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {

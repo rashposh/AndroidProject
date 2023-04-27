@@ -94,9 +94,7 @@ public class Database {
             DBHelper helper = new DBHelper(context);
             var database = helper.getWritableDatabase();
             long newRowId = database.insert(LSEntry.TABLE_NAME, null, values);//thêm vào csdl
-
         }
-
     }
 
 
@@ -164,12 +162,10 @@ public class Database {
         // DELETE FROM {Tên bảng} WHERE {Cột đường dẫn}={Giá trị cần xóa}
         database.delete(LSEntry.TABLE_NAME, LSEntry.COLUMN_NAME_DUONG_DAN+"=?", new String[]{newsItem.getLink()});
     }
-
     public void deleteAll(Context context) {
         DBHelper helper = new DBHelper(context);
         var database = helper.getWritableDatabase();
         database.delete(LSEntry.TABLE_NAME, null, null);
-
     }
 }
 

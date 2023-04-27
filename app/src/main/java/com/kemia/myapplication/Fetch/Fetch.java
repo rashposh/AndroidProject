@@ -76,7 +76,8 @@ public class Fetch extends AsyncTask<GoogleNewsHandler, Integer, ArrayList<Googl
     protected ArrayList<GoogleNewsHandler> doInBackground(GoogleNewsHandler... googleNewsHandlers) {
         ArrayList<GoogleNewsHandler> list = new ArrayList<>();
         for (var ggNewsHandler: googleNewsHandlers) {
-            var ggNews = JsonParser(GetAndCreateData());
+            var data = GetAndCreateData();
+            var ggNews = JsonParser(data);
             ggNewsHandler.setGoogleNews(ggNews);
             list.add(ggNewsHandler);
         }//chạy tác vụ nền
