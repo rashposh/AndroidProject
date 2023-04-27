@@ -6,7 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.kemia.myapplication.Data.DBContract;
+import com.kemia.myapplication.Data.DBHelper;
+import com.kemia.myapplication.Data.LSEntry;
 
 public class DBHelperyt extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
@@ -17,32 +18,33 @@ public class DBHelperyt extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    private static final String SQL_CREATE_ENTRIES =
-            "CREATE TABLE " + DBContractyt.YTEntry.TABLE_NAME + " (" +
-                    DBContractyt.YTEntry.COLUMN_NAME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    DBContractyt.YTEntry.COLUMN_NAME_TITLE + " TEXT," +
-                    DBContractyt.YTEntry.COLUMN_NAME_DUONG_DAN + " TEXT," +
-                    DBContractyt.YTEntry.COLUMN_NAME_DC_ANH + " TEXT," +
-                    DBContractyt.YTEntry.COLUMN_NAME_MO_TA + " TEXT," +
-                    DBContractyt.YTEntry.COLUMN_NAME_IMG + " TEXT," +
-                    DBContractyt.YTEntry.COLUMN_NHAN_BUTTON + " DATETIME)";
+    public static final String SQL_CREATE_ENTRIES =
+            "CREATE TABLE " + YTEntry.TABLE_NAME + " (" +
+                    YTEntry.COLUMN_NAME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    YTEntry.COLUMN_NAME_TITLE + " TEXT," +
+                    YTEntry.COLUMN_NAME_DUONG_DAN + " TEXT," +
+                    YTEntry.COLUMN_NAME_DC_ANH + " TEXT," +
+                    YTEntry.COLUMN_NAME_MO_TA + " TEXT," +
+                    YTEntry.COLUMN_NAME_IMG + " TEXT," +
+                    YTEntry.COLUMN_NAME_TG_NHAN + " DATETIME)";
 
 
 
-    private static final String SQL_DELETE_ENTRIES =
-            "DROP TABLE IF EXISTS " + DBContractyt.YTEntry.TABLE_NAME;
+    public static final String SQL_DELETE_ENTRIES =
+            "DROP TABLE IF EXISTS " + YTEntry.TABLE_NAME;
 
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(SQL_CREATE_ENTRIES);
+        db.execSQL(DBHelperyt.SQL_CREATE_ENTRIES);
+        db.execSQL(DBHelper.SQL_CREATE_ENTRIES);
     }
 
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(SQL_DELETE_ENTRIES);
+        db.execSQL(DBHelperyt.SQL_DELETE_ENTRIES);
+        db.execSQL(DBHelper.SQL_DELETE_ENTRIES);
+
         onCreate(db);
     }
-    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        onUpgrade(db, oldVersion, newVersion);
-    }
+
 }
 

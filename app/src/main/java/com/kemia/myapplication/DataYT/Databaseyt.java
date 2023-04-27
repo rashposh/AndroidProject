@@ -6,9 +6,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.kemia.myapplication.Data.LSEntry;
-import com.kemia.myapplication.DataYT.DBContractyt.YTEntry;
-import com.kemia.myapplication.Data.DBHelper;
 import com.kemia.myapplication.Fetch.GoogleNews;
 import com.kemia.myapplication.Fetch.GoogleNewsItem;
 import com.kemia.myapplication.R;
@@ -33,17 +30,23 @@ public class Databaseyt {
     }
 
     public void dropTable (Context context) {
-        DBHelper helper = new DBHelper(context);
+        DBHelperyt helper = new DBHelperyt(context);
         var database = helper.getWritableDatabase();
         helper.onUpgrade(database, 1, 1);
     }
 
 
 
+    public void addNewsItem(GoogleNewsItem item, Context context) {
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);//tạo đối tượng để định dạng ngày thàng năm
+        var currentTime = Calendar.getInstance().getTime();// lấy thời gian hiện tại
+        var tgNhan = dateFormat.format(currentTime);//chỉnh sửa thời gian đó thành định dạng trên
+        addData(context, item.getTitle(),item.getImgUrl(), item.getLink(),item.getDescription(), tgNhan, item.getImgBitMap());//thêm dữ liệu vào sqlite
+    }
 
-    public boolean checkIfExist(Context context, String duongDan) {
-        DBHelper helper = new DBHelper(context);
+    public boolean checkIfExist(Context context, String duongDan) {// kiểm tra nó có trong cở sở dữ liệu không
+        DBHelperyt helper = new DBHelperyt(context);
         var database = helper.getReadableDatabase();
 
         String query = String.format("SELECT * FROM %s WHERE %s='%s'", YTEntry.TABLE_NAME, YTEntry.COLUMN_NAME_DUONG_DAN, duongDan);
@@ -54,20 +57,17 @@ public class Databaseyt {
 
     public void addData(Context context, String TITLE, String DC_ANH, String DUONG_DAN, String MO_TA, String TG_NHAN, Bitmap IMG) {
 
-
-
-        if (Objects.isNull(IMG)) {
+        if (Objects.isNull(IMG)) {//nếu kh có ảnh thì cho ảnh bruh vào
             IMG = BitmapFactory.decodeResource(context.getResources(), R.drawable.bruh);
         }
-        // Create a new map of values, where column names are the keys
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        IMG.compress(Bitmap.CompressFormat.PNG, 100, bos);
+        IMG.compress(Bitmap.CompressFormat.PNG, 100, bos);// biến ảnh thành 1 mảng dữ liệu
         var img = bos.toByteArray();
-        File directory = context.getFilesDir();
-        File file = new File(directory,TG_NHAN+".png");
+        File directory = context.getFilesDir();//lấy vị trí của ứng dụng
+        File file = new File(directory,TG_NHAN+".png");// vị trí file chứa dữ liệu
         if (!file.exists()) {
             try {
-                file.createNewFile();
+                file.createNewFile();//taọ file dựa vào vị trí đó
 
                 FileOutputStream fos = new FileOutputStream(file);
                 fos.write(bos.toByteArray());
@@ -79,29 +79,27 @@ public class Databaseyt {
         }
 
 
-        ContentValues values = new ContentValues();
+        ContentValues values = new ContentValues();// đặt tên cho từng cột trong csdl
         values.put(YTEntry.COLUMN_NAME_TITLE, TITLE);
         values.put(YTEntry.COLUMN_NAME_DC_ANH, DC_ANH);
         values.put(YTEntry.COLUMN_NAME_DUONG_DAN, DUONG_DAN);
         values.put(YTEntry.COLUMN_NAME_MO_TA, MO_TA);
+        values.put(YTEntry.COLUMN_NAME_TG_NHAN, TG_NHAN);
         values.put(YTEntry.COLUMN_NAME_IMG, file.getAbsolutePath());
 
 
 
-        if (checkIfExist(context, DUONG_DAN)) {
-            DBHelper helper = new DBHelper(context);
+        if (checkIfExist(context, DUONG_DAN)) {//nếu nó có trong sqlite thì đem nó lên trên
+            DBHelperyt helper = new DBHelperyt(context);
             var database = helper.getWritableDatabase();
 
-            // Insert the new row, returning the primary key value of the new row
             long newRowId = database.update(YTEntry.TABLE_NAME, values, YTEntry.COLUMN_NAME_TITLE+"=?", new String[]{TITLE});
 
         }
         else {
-            DBHelper helper = new DBHelper(context);
+            DBHelperyt helper = new DBHelperyt(context);
             var database = helper.getWritableDatabase();
-
-            // Insert the new row, returning the primary key value of the new row
-            long newRowId = database.insert(YTEntry.TABLE_NAME, null, values);
+            long newRowId = database.insert(YTEntry.TABLE_NAME, null, values);//thêm vào csdl
 
         }
 
@@ -111,36 +109,32 @@ public class Databaseyt {
     public GoogleNews readFromDatabase(Context context) {
 
         DBHelperyt helper = new DBHelperyt(context);
-        var database = helper.getReadableDatabase();
+        var database = helper.getReadableDatabase();//lấy csdl
 
         String[] projection = {
                 YTEntry.COLUMN_NAME_TITLE,
                 YTEntry.COLUMN_NAME_DC_ANH,
                 YTEntry.COLUMN_NAME_DUONG_DAN,
                 YTEntry.COLUMN_NAME_MO_TA,
-
+                YTEntry.COLUMN_NAME_TG_NHAN,
                 YTEntry.COLUMN_NAME_IMG
         };
 
-// Filter results WHERE "title" = 'My Title'
-        String selection = YTEntry.COLUMN_NAME_TITLE + " = ?";
-        String[] selectionArgs = { "%" };
-
-// How you want the results sorted in the resulting Cursor
         String sortOrder =
-                DBContractyt.YTEntry.COLUMN_NHAN_BUTTON + " DESC";
-        Cursor cursor = database.query(
-                YTEntry.TABLE_NAME,   // The table to query
-                projection,             // The array of columns to return (pass null to get all)
-                null,              // The columns for the WHERE clause
-                null,          // The values for the WHERE clause
-                null,                   // don't group the rows
-                null,                   // don't filter by row groups
-                sortOrder               // The sort order
+                YTEntry.COLUMN_NAME_TG_NHAN + " DESC";
+
+        Cursor cursor = database.query(//tra sqlite từng dòng
+                YTEntry.TABLE_NAME,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                sortOrder
         );
         ArrayList<GoogleNewsItem> items = new ArrayList<>();
-        while(cursor.moveToNext()) {
-            String itemTitle = cursor.getString(
+        while(cursor.moveToNext()) {// lấy từng dòng của cột
+            String itemTitle = cursor.getString(//lấy từng giá trị của cột
                     cursor.getColumnIndexOrThrow(YTEntry.COLUMN_NAME_TITLE));
             String itemLink = cursor.getString(
                     cursor.getColumnIndexOrThrow(YTEntry.COLUMN_NAME_DUONG_DAN));
@@ -151,18 +145,18 @@ public class Databaseyt {
             String imgLoc = cursor.getString(
                     cursor.getColumnIndexOrThrow(YTEntry.COLUMN_NAME_IMG));
 
-            File file = new File(imgLoc);
+            File file = new File(imgLoc);//tạo 1 đối tượng để đọc file từ vị trí hình ảnh
             byte[] data = new byte[(int) file.length()];
             try {
-                BufferedInputStream buf = new BufferedInputStream(new FileInputStream(file));
-                buf.read(data, 0, data.length);
+                BufferedInputStream buf = new BufferedInputStream(new FileInputStream(file));//tạo đối tượng để đọc
+                buf.read(data, 0, data.length);//đọc dữ liệu và truyền vào mảng data
                 buf.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            var img = BitmapFactory.decodeByteArray(data, 0, data.length);
+            var img = BitmapFactory.decodeByteArray(data, 0, data.length);//biến mảng chưas dư liệu đó thành ảnh
 
-            GoogleNewsItem ggNewItem = new GoogleNewsItem(itemTitle, itemLink,itemDescription,itemImgUrl, img);
+            GoogleNewsItem ggNewItem = new GoogleNewsItem(itemTitle, itemLink,itemDescription,itemImgUrl, img);//tạo biến theo dạng GoogleNewsItem
             items.add(ggNewItem);
         }
         cursor.close();
@@ -170,11 +164,5 @@ public class Databaseyt {
     }
 
 
-    public void deleteItem(Context context,GoogleNewsItem newsItem) {
-        DBHelper helper = new DBHelper(context);
-        var database = helper.getWritableDatabase();
 
-        database.delete(YTEntry.TABLE_NAME, YTEntry.COLUMN_NAME_DUONG_DAN+"=?", new String[]{newsItem.getLink()});
-
-    }
 }

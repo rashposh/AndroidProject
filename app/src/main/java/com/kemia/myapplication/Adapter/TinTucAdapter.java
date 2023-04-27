@@ -70,6 +70,9 @@ public class TinTucAdapter extends RecyclerView.Adapter<TinTucAdapter.ViewHolder
         GoogleNewsItem googleNewsItem = ggNewItems.get(pos);
         var intent = new Intent(v.getContext(), webview.class);
         intent.putExtra("url", googleNewsItem.getLink());
+
+        TruyenDuLieu.googleNewsItem = googleNewsItem;
+
         v.getContext().startActivity(intent);
 
         Database db = new Database();

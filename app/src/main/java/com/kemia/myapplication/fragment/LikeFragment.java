@@ -12,7 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.kemia.myapplication.Adapter.LSAdapter;
-import com.kemia.myapplication.Data.Database;
+import com.kemia.myapplication.Adapter.YTAdapter;
+import com.kemia.myapplication.DataYT.Databaseyt;
 import com.kemia.myapplication.Fetch.GoogleNews;
 import com.kemia.myapplication.Fetch.GoogleNewsItem;
 import com.kemia.myapplication.R;
@@ -103,7 +104,7 @@ public class LikeFragment extends Fragment {
         return rootView;
     }
     private void setupView() {
-        Database db = new Database();
+        Databaseyt db = new Databaseyt();
         var ggN = db.readFromDatabase(getActivity().getApplicationContext());
 
         items.clear();
@@ -111,7 +112,7 @@ public class LikeFragment extends Fragment {
     }
     private void createView(GoogleNews googleNews) {
         items.addAll(googleNews.getItems());
-        var adapter = new LSAdapter(items);
+        var adapter = new YTAdapter(items);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }

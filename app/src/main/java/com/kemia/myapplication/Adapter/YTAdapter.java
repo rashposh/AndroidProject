@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kemia.myapplication.Data.Database;
+import com.kemia.myapplication.DataYT.Databaseyt;
 import com.kemia.myapplication.Fetch.GoogleNewsItem;
 import com.kemia.myapplication.R;
 import com.kemia.myapplication.webview;
@@ -83,7 +84,7 @@ public class YTAdapter extends RecyclerView.Adapter<YTAdapter.ViewHolder> {
         intent.putExtra("url", googleNewsItem.getLink());
         v.getContext().startActivity(intent);
 
-        Database db = new Database();
+        Databaseyt db = new Databaseyt();
         db.addNewsItem(googleNewsItem, v.getContext());
     }
 
@@ -92,20 +93,16 @@ public class YTAdapter extends RecyclerView.Adapter<YTAdapter.ViewHolder> {
         return ggNewItems.size();
     }
 
-    // Provide a direct reference to each of the views within a data item
-    // Used to cache the views within the item layout for fast access
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        // Your holder should contain a member variable
-        // for any view that will be set as you render a row
+
         public TextView nameTextView;
         public ImageView imageView;
 
         public Button deleteBtn;
-        // We also create a constructor that accepts the entire item row
-        // and does the view lookups to find each subview
+
         public ViewHolder(View itemView) {
-            // Stores the itemView in a public final member variable that can be used
-            // to access the context from any ViewHolder instance.
+
             super(itemView);
 
             nameTextView = (TextView) itemView.findViewById(R.id.textView3);
@@ -122,7 +119,6 @@ public class YTAdapter extends RecyclerView.Adapter<YTAdapter.ViewHolder> {
 
     private List<GoogleNewsItem> ggNewItems;
 
-    // Pass in the contact array into the constructor
     public YTAdapter(List<GoogleNewsItem> ggNewItems) {
         this.ggNewItems = ggNewItems;
     }

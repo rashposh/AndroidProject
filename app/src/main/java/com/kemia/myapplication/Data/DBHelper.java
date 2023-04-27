@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.provider.ContactsContract;
 import com.kemia.myapplication.Data.LSEntry;
+import com.kemia.myapplication.DataYT.DBHelperyt;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -18,7 +20,7 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    private static final String SQL_CREATE_ENTRIES =
+    public static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + LSEntry.TABLE_NAME + " (" +
                     LSEntry.COLUMN_NAME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     LSEntry.COLUMN_NAME_TITLE + " TEXT," +
@@ -28,7 +30,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     LSEntry.COLUMN_NAME_IMG + " TEXT," +
                     LSEntry.COLUMN_NAME_TG_NHAN + " DATETIME)";
 
-    private static final String SQL_DELETE_ENTRIES =
+    public static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + LSEntry.TABLE_NAME;
 
     public void onCreate(SQLiteDatabase db) {
@@ -37,10 +39,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(SQL_DELETE_ENTRIES);
+        db.execSQL(DBHelperyt.SQL_DELETE_ENTRIES);
+        db.execSQL(DBHelper.SQL_DELETE_ENTRIES);
         onCreate(db);
-    }
-    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        onUpgrade(db, oldVersion, newVersion);
     }
 }

@@ -79,7 +79,7 @@ public class HistoryFragment extends Fragment {
 
         delAllBtn.setOnClickListener(v -> {
             Database db = new Database();
-            db.dropTable(v.getContext());
+            db.deleteAll(v.getContext());
             setupView();
         });
 
@@ -97,8 +97,8 @@ public class HistoryFragment extends Fragment {
     private void createView(GoogleNews googleNews) {//tạo bảng
         items.addAll(googleNews.getItems());
         var adapter = new LSAdapter(items);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        recyclerView.setAdapter(adapter);//recyculerView sắp theo adapter đó để hiển thị lên
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));//set kiểu cho recyculerView đó
     }
 
 }
