@@ -62,7 +62,6 @@ public class LSAdapter  extends RecyclerView.Adapter<LSAdapter.ViewHolder> {
                 itemListener(v, pos);
             }
         });
-
         holder.deleteBtn.setOnClickListener(view -> {
             ggNewItems.remove(pos);//xóa dựa vào vị trí mảng
             notifyItemRemoved(pos);//báo cho recyculer view có 1 thg bị xóa để nó hiển thị lại
@@ -72,7 +71,6 @@ public class LSAdapter  extends RecyclerView.Adapter<LSAdapter.ViewHolder> {
             db.deleteItem(view.getContext(), ggNewItem);//xóa nó trong database nốt
         });
     }
-
     private void itemListener(View v, int pos) {
 
         GoogleNewsItem googleNewsItem = ggNewItems.get(pos);//lấy bài báo đã nhấn

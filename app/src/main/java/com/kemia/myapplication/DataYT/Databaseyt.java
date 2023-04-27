@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.kemia.myapplication.Data.DBHelper;
+import com.kemia.myapplication.Data.LSEntry;
 import com.kemia.myapplication.Fetch.GoogleNews;
 import com.kemia.myapplication.Fetch.GoogleNewsItem;
 import com.kemia.myapplication.R;
@@ -162,7 +164,12 @@ public class Databaseyt {
         cursor.close();
         return new GoogleNews(items);
     }
-
+    public void deleteItem(Context context,GoogleNewsItem newsItem) {// xóa Yêu thích
+        DBHelper helper = new DBHelper(context);
+        var database = helper.getWritableDatabase();
+        // DELETE FROM {Tên bảng} WHERE {Cột đường dẫn}={Giá trị cần xóa}
+        database.delete(YTEntry.TABLE_NAME, YTEntry.COLUMN_NAME_DUONG_DAN+"=?", new String[]{newsItem.getLink()});
+    }
 
 
 }

@@ -72,7 +72,7 @@ public class YTAdapter extends RecyclerView.Adapter<YTAdapter.ViewHolder> {
             notifyItemRemoved(pos);
             notifyItemRangeChanged(pos, ggNewItems.size());
 
-            Database db = new Database();
+            Databaseyt db = new Databaseyt();
             db.deleteItem(view.getContext(), ggNewItem);
         });
     }

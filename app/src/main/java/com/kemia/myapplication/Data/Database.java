@@ -64,11 +64,9 @@ public class Database {
         if (!file.exists()) {
             try {
                 file.createNewFile();//taọ file dựa vào vị trí đó
-
                 FileOutputStream fos = new FileOutputStream(file);
                 fos.write(bos.toByteArray());
                 fos.close();
-
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
